@@ -13,7 +13,7 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-  origin: true
+  origin: 'https://users-crud-chi.vercel.app/'
 }));
 app.use(express.json());
 
