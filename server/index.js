@@ -9,7 +9,7 @@ const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://jeetendra01:crud54321@
 
 
 const allowedOrigins = [
-  'https://users-crud-jeetendra-kumars-projects.vercel.app/'
+  'https://users-crud-jeetendra-kumars-projects.vercel.app/users'
 ];
 
 app.use(cors({
