@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 
-// Create a new user
+
 router.post('/', async (req, res) => {
   try {
     console.log('POST /users req.body:', req.body);
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Get all users
+
 router.get('/', async (req, res) => {
   try {
     const users = await User.find().sort({ createdAt: -1 });
@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Update a user by id
+
 router.put('/:id', async (req, res) => {
   try {
     const { name, email, phone, address } = req.body;
@@ -54,7 +54,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete a user by id
+
 router.delete('/:id', async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);

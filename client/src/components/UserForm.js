@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import InputMask from 'react-input-mask';
 
-/**
- * UserForm component handles both adding and editing a user.
- * It manages form state, validation, and submission.
- */
+
 const UserForm = ({ onSubmit, users, editingUser }) => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  // Initialize form data state
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,10 +15,9 @@ const UserForm = ({ onSubmit, users, editingUser }) => {
     address: ''
   });
 
-  // State to hold validation errors
+  
   const [errors, setErrors] = useState({});
 
-  // Populate form when editing an existing user
   useEffect(() => {
     if (editingUser) {
       setFormData({
@@ -43,7 +39,7 @@ const UserForm = ({ onSubmit, users, editingUser }) => {
     }
   }, [id, users, editingUser]);
 
-  // Validate form fields
+  
   const validate = () => {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Name is required';
@@ -62,16 +58,16 @@ const UserForm = ({ onSubmit, users, editingUser }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Handle input changes and update form state
+  
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value});
   };
 
-  // Handle form submission
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate()) return;
-    console.log('Submitting form data:', formData); // Added logging for debugging
+    console.log('Submitting form data:', formData);
     if (id) {
       onSubmit(id, formData);
     } else {

@@ -8,7 +8,7 @@ import Navbar from './components/Navbar';
 
 import { useNavigate } from 'react-router-dom';
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://users-crud-7kwg.onrender.com';
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -61,7 +61,6 @@ const App = () => {
     }
   };
 
-  // Wrapper to set editing user and navigate to edit page
   const setEditingUser = (user) => {
     setEditingUserState(user);
     if (user) {

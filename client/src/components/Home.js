@@ -1,11 +1,6 @@
 import React from 'react';
 import './Home.css';
 
-/**
- * Home component serves as the landing page with a clear slogan,
- * brief description, and a visual representation of the app's functionality.
- * Designed with clean layout, subtle animations, and professional styling.
- */
 const Home = () => {
   return (
     <>

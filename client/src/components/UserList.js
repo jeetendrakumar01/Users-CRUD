@@ -6,7 +6,7 @@ const UserList = ({ users, onEdit, onDelete }) => {
   };
 
   const handleAdd = () => {
-    onEdit(null); // Clear editing user
+    onEdit(null); 
   };
 
   return (
