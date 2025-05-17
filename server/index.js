@@ -8,8 +8,20 @@ const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://jeetendra01:crud54321@clustercrud.oeq1fmu.mongodb.net/?retryWrites=true&w=majority&appName=Clustercrud';
 
 // Middleware
+const allowedOrigins = [
+  'http://localhost:3000'
+];
+
 app.use(cors({
-  origin: true
+  origin: function(origin, callback) {
+    console.log('CORS origin:', origin);
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
 }));
 app.use(express.json());
 

@@ -8,6 +8,8 @@ import Navbar from './components/Navbar';
 
 import { useNavigate } from 'react-router-dom';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
+
 const App = () => {
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUserState] = useState(null);
@@ -15,7 +17,7 @@ const App = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('https://users-crud-7kwg.onrender.com/users/');
+      const res = await axios.get(API_BASE_URL + '/users/');
       setUsers(res.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -28,7 +30,7 @@ const App = () => {
 
   const addUser = async (user) => {
     try {
-      const res = await axios.post('https://users-crud-7kwg.onrender.com/users/', user);
+      const res = await axios.post(API_BASE_URL + '/users/', user);
       setUsers([res.data, ...users]);
     } catch (error) {
       console.error('Error adding user:', error);
@@ -38,7 +40,7 @@ const App = () => {
 
   const updateUser = async (id, updatedUser) => {
     try {
-      const res = await axios.put(`https://users-crud-7kwg.onrender.com/users/${id}`, updatedUser);
+      const res = await axios.put(API_BASE_URL + '/users/' + id, updatedUser);
       setUsers(users.map((user) => (user._id === id ? res.data : user)));
       setEditingUserState(null);
       navigate('/users');
@@ -51,7 +53,7 @@ const App = () => {
   const deleteUser = async (id) => {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
     try {
-      await axios.delete(`https://users-crud-7kwg.onrender.com/users/${id}`);
+      await axios.delete(API_BASE_URL + '/users/' + id);
       setUsers(users.filter((user) => user._id !== id));
     } catch (error) {
       console.error('Error deleting user:', error);
@@ -63,7 +65,7 @@ const App = () => {
   const setEditingUser = (user) => {
     setEditingUserState(user);
     if (user) {
-      navigate(`/edit/${user._id}`);
+      navigate('/edit/' + user._id);
     } else {
       navigate('/add');
     }
