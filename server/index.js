@@ -8,7 +8,6 @@ const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://jeetendra01:crud54321@clustercrud.oeq1fmu.mongodb.net/?retryWrites=true&w=majority&appName=Clustercrud';
 
 // Middleware
-const cors = require('cors');
 app.use(cors({
   origin: 'https://users-crud-git-main-jeetendra-kumars-projects.vercel.app/', 
   credentials: true
