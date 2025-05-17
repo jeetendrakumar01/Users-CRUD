@@ -1,0 +1,33 @@
+.phone-input-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.phone-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.phone-icon {
+  position: absolute;
+  left: 10px;
+  pointer-events: none;
+  color: #555;
+}
+
+.phone-input-wrapper input {
+  padding-left: 35px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 2.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}

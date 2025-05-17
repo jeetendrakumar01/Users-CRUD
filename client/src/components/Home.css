@@ -1,0 +1,273 @@
+.home-container {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #f0f0f5;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(101, 71, 255, 0.5);
+}
+
+.slogan {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #e0e0ff;
+  margin-bottom: 15px;
+  animation: fadeInDown 1s ease forwards;
+  text-shadow: 0 0 10px #a29bfe;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  color: #d0d0ff;
+  margin-bottom: 40px;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
+  text-shadow: 0 0 8px #a29bfe;
+}
+
+.animation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.phone {
+  width: 220px;
+  height: 440px;
+  background: #222;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+}
+
+.screen {
+  background: white;
+  width: 180px;
+  height: 380px;
+  margin: 30px auto;
+  border-radius: 20px;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contact-list {
+  flex-grow: 1;
+  overflow: hidden;
+  animation: slideContacts 6s linear infinite;
+}
+
+.contact-item {
+  font-size: 1.1rem;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.btn.add {
+  background-color: #28a745;
+}
+
+.btn.add:hover {
+  background-color: #218838;
+}
+
+.btn.edit {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.btn.edit:hover {
+  background-color: #e0a800;
+}
+
+.btn.delete {
+  background-color: #dc3545;
+}
+
+.btn.delete:hover {
+  background-color: #c82333;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: #007bff;
+  animation: bounce 2s infinite;
+}
+
+.arrow {
+  margin: 10px 0;
+}
+
+.database {
+  text-align: center;
+  max-width: 180px;
+  animation: fadeIn 2s ease forwards;
+  opacity: 0;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+
+.db-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes slideContacts {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-60px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .animation-container {
+    gap: 30px;
+  }
+
+  .phone {
+    width: 180px;
+    height: 360px;
+  }
+
+  .screen {
+    width: 140px;
+    height: 300px;
+    padding: 12px;
+  }
+
+  .contact-item {
+    font-size: 1rem;
+  }
+
+  .btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+
+  .arrows {
+    font-size: 2rem;
+  }
+
+  .db-icon {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 20px 10px;
+  }
+
+  .slogan {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .animation-container {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .phone {
+    width: 160px;
+    height: 320px;
+  }
+
+  .screen {
+    width: 120px;
+    height: 260px;
+    padding: 10px;
+  }
+
+  .contact-item {
+    font-size: 0.85rem;
+    padding: 6px 0;
+  }
+
+  .btn {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    border-radius: 16px;
+  }
+
+  .arrows {
+    font-size: 1.2rem;
+    gap: 8px;
+  }
+
+  .db-icon {
+    font-size: 1.5rem;
+  }
+
+  .database {
+    font-size: 0.9rem;
+  }
+}
