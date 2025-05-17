@@ -12,6 +12,7 @@ app.use(cors({
   origin: 'https://users-crud-git-main-jeetendra-kumars-projects.vercel.app/', 
   credentials: true
 }));
+app.use(express.json());
 
 // Routes
 app.use('/users', usersRouter);
