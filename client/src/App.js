@@ -12,7 +12,7 @@ const App = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('https://users-crud-7kwg.onrender.com');
+      const res = await axios.get('https://users-crud-7kwg.onrender.com/users/');
       setUsers(res.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -25,7 +25,7 @@ const App = () => {
 
   const addUser = async (user) => {
     try {
-      const res = await axios.post('https://users-crud-7kwg.onrender.com', user);
+      const res = await axios.post('https://users-crud-7kwg.onrender.com/users/', user);
       setUsers([res.data, ...users]);
     } catch (error) {
       console.error('Error adding user:', error);
@@ -35,7 +35,7 @@ const App = () => {
 
   const updateUser = async (id, updatedUser) => {
     try {
-      const res = await axios.put(`https://users-crud-7kwg.onrender.com${id}`, updatedUser);
+      const res = await axios.put(`https://users-crud-7kwg.onrender.com/users/${id}`, updatedUser);
       setUsers(users.map((user) => (user._id === id ? res.data : user)));
       setEditingUser(null);
     } catch (error) {
@@ -47,7 +47,7 @@ const App = () => {
   const deleteUser = async (id) => {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
     try {
-      await axios.delete(`http://localhost:5000/users/${id}`);
+      await axios.delete(`https://users-crud-7kwg.onrender.com/users/${id}`);
       setUsers(users.filter((user) => user._id !== id));
     } catch (error) {
       console.error('Error deleting user:', error);
