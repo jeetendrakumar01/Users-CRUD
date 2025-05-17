@@ -71,6 +71,7 @@ const UserForm = ({ onSubmit, users, editingUser }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate()) return;
+    console.log('Submitting form data:', formData); // Added logging for debugging
     if (id) {
       onSubmit(id, formData);
     } else {

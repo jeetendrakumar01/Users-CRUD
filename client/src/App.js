@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import UserForm from './components/UserForm';
 import UserList from './components/UserList';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 
+import { useNavigate } from 'react-router-dom';
+
 const App = () => {
   const [users, setUsers] = useState([]);
-  const [editingUser, setEditingUser] = useState(null);
+  const [editingUser, setEditingUserState] = useState(null);
+  const navigate = useNavigate();
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('https://users-crud-3.onrender.com');
+      const res = await axios.get('https://users-crud-7kwg.onrender.com/users/');
       setUsers(res.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -25,7 +28,7 @@ const App = () => {
 
   const addUser = async (user) => {
     try {
-      const res = await axios.post('https://users-crud-3.onrender.com', user);
+      const res = await axios.post('https://users-crud-7kwg.onrender.com/users/', user);
       setUsers([res.data, ...users]);
     } catch (error) {
       console.error('Error adding user:', error);
@@ -35,9 +38,10 @@ const App = () => {
 
   const updateUser = async (id, updatedUser) => {
     try {
-      const res = await axios.put(`https://users-crud-3.onrender.com${id}`, updatedUser);
+      const res = await axios.put(`https://users-crud-7kwg.onrender.com/users/${id}`, updatedUser);
       setUsers(users.map((user) => (user._id === id ? res.data : user)));
-      setEditingUser(null);
+      setEditingUserState(null);
+      navigate('/users');
     } catch (error) {
       console.error('Error updating user:', error);
       alert(error.response?.data?.message || 'Failed to update user');
@@ -47,7 +51,7 @@ const App = () => {
   const deleteUser = async (id) => {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
     try {
-      await axios.delete(`http://localhost:5000/users/${id}`);
+      await axios.delete(`https://users-crud-7kwg.onrender.com/users/${id}`);
       setUsers(users.filter((user) => user._id !== id));
     } catch (error) {
       console.error('Error deleting user:', error);
@@ -55,28 +59,36 @@ const App = () => {
     }
   };
 
+  // Wrapper to set editing user and navigate to edit page
+  const setEditingUser = (user) => {
+    setEditingUserState(user);
+    if (user) {
+      navigate(`/edit/${user._id}`);
+    } else {
+      navigate('/add');
+    }
+  };
+
   return (
-    <Router>
-      <div className="container">
-        <h1>  Mern-Stack Crud App  </h1>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/users"
-            element={<UserList users={users} onEdit={setEditingUser} onDelete={deleteUser} />}
-          />
-          <Route
-            path="/add"
-            element={<UserForm onSubmit={addUser} />}
-          />
-          <Route
-            path="/edit/:id"
-            element={<UserForm users={users} editingUser={editingUser} onSubmit={updateUser} />}
-          />
-        </Routes>
-      </div>
-    </Router>
+    <div className="container">
+      <h1>  Mern-Stack Crud App  </h1>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/users"
+          element={<UserList users={users} onEdit={setEditingUser} onDelete={deleteUser} />}
+        />
+        <Route
+          path="/add"
+          element={<UserForm onSubmit={addUser} />}
+        />
+        <Route
+          path="/edit/:id"
+          element={<UserForm users={users} editingUser={editingUser} onSubmit={updateUser} />}
+        />
+      </Routes>
+    </div>
   );
 };
 
