@@ -12,7 +12,7 @@ const App = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('https://users-crud-3.onrender.com');
+      const res = await axios.get('https://users-crud-7kwg.onrender.com');
       setUsers(res.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -25,7 +25,7 @@ const App = () => {
 
   const addUser = async (user) => {
     try {
-      const res = await axios.post('https://users-crud-3.onrender.com', user);
+      const res = await axios.post('https://users-crud-7kwg.onrender.com', user);
       setUsers([res.data, ...users]);
     } catch (error) {
       console.error('Error adding user:', error);
@@ -35,7 +35,7 @@ const App = () => {
 
   const updateUser = async (id, updatedUser) => {
     try {
-      const res = await axios.put(`https://users-crud-3.onrender.com${id}`, updatedUser);
+      const res = await axios.put(`https://users-crud-7kwg.onrender.com${id}`, updatedUser);
       setUsers(users.map((user) => (user._id === id ? res.data : user)));
       setEditingUser(null);
     } catch (error) {
