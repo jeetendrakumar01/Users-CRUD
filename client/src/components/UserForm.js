@@ -108,12 +108,12 @@ const UserForm = ({ onSubmit, users, editingUser }) => {
             />
           </svg>
           <InputMask
-            mask="(999) 999-9999"
+            mask="(+91) 123456789"
             id="phone"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="(123) 456-7890"
+            placeholder="(+91) 123456789"
           />
         </div>
         {errors.phone && <small className="error">{errors.phone}</small>}
