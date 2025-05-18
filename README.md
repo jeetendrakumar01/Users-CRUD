@@ -1,73 +1,64 @@
-# MERN Stack CRUD Application
+                                                                              MERN Stack CRUD
 
-This is a simple MERN stack application that allows users to perform Create, Read, Update, and Delete (CRUD) operations on user data.
+                                                                        MERN Stack CRUD Application
 
-## Project Structure
+Welcome to the MERN Stack CRUD Application! This project is a full-stack web application built with MongoDB Express React and Node.js that allows users to easily manage user data through a sleek and intuitive interface. Whether you want to add view update or delete user information this app provides a seamless experience with robust backend support and a responsive frontend.
 
-- `/server` - Backend Node.js + Express server with MongoDB (Mongoose)
-- `/client` - Frontend React application
+Technologies Used
 
-## Prerequisites
+ Backend:                                   
+- Node.js
+- Express.js
+- MongoDB with Mongoose
+- CORS for cross-origin requests
 
-- Node.js and npm installed
-- MongoDB installed locally or use MongoDB Atlas
+Frontend:
+- React.js
+- React Router DOM for client-side routing
+- Axios for HTTP requests
+- react-input-mask for input formatting
 
-## Setup Instructions
+Features
+- Add new users with details: Name Email Phone Number and Address
+- View all users in a clean sortable table
+- Edit existing user information with form validation
+- Delete users with confirmation prompts
+- Responsive and user-friendly interface
+- Basic form validation including required fields and email format checks
+- Smooth navigation using React Router
+- - The backend uses CORS to allow requests from the frontend.
 
-### Backend
+Installation
+- Node.js and npm installed on your machine
+- MongoDB installed locally or a MongoDB Atlas account
 
-1. Navigate to the `server` directory:
-   ```
-   cd server
-   ```
-2. Install dependencies:
-   ```
-   npm install
-   ```
-3. Start the server:
+Backend Setup
 
-   ```
-   npm run dev
-   ```
+1.cd server
+   
+2.npm install
+   
+3.nodemon index.js
+   
+4.MONGO_URI environment variable.(make .env file in backend)
 
-   The server will run on `http://localhost:5000`.
+Frontend Setup
 
-4. (Optional) To use a different MongoDB URI, set the `MONGO_URI` environment variable.
+ 1. cd client
+  
+ 2.  npm install
+   
+ 3.  npm start
 
-### Frontend
+ >>Upload Server folder in render
+> >![image](https://github.com/user-attachments/assets/11efce26-b2c2-4e75-9913-7df111a282d6)
+> >Upload frontend on Vercel
+> >
+![image](https://github.com/user-attachments/assets/52ad7b37-cc38-4fa0-a6ad-2d046f9ae5c7)
 
-1. Navigate to the `client` directory:
-   ```
-   cd client
-   ```
-2. Install dependencies:
-   ```
-   npm install
-   ```
-3. Start the React app:
-   ```
-   npm start
-   ```
-   The app will run on `http://localhost:3000`.
 
-## Features
+website working----------
 
-- Add new users with Name, Email, Phone Number, and Address
-- View all users in a table
-- Edit existing users
-- Delete users
-- Basic form validation for required fields and email format
 
-## Notes
-
-- The backend uses CORS to allow requests from the frontend.
-- The frontend uses React Router for navigation between pages.
-- The backend uses Mongoose for MongoDB interaction.
-
-## Deployment
-
-- You can deploy the frontend on Vercel and backend on Render or Heroku (optional).
-
-## License
-
-This project is open source and free to use.
+  
+  
