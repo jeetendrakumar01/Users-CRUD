@@ -59,6 +59,13 @@ Frontend Setup
 
 website working----------
 
+![image](https://github.com/user-attachments/assets/8af9ce3e-fc7d-46d2-ac79-b9031ed9f783)
+![image](https://github.com/user-attachments/assets/99f42810-30b3-462a-bdc4-716655601ef6)
+![image](https://github.com/user-attachments/assets/1d052971-c84e-47d3-8c0b-5d15a3cc3e30)
+
+
+
+
 
   
   
