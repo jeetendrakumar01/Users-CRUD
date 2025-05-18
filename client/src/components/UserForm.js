@@ -51,7 +51,7 @@ const UserForm = ({ onSubmit, users, editingUser }) => {
     if (!formData.phone.trim()) {
       newErrors.phone = 'Phone number is required';
     } else if (!/^\(\d{3}\) \d{3}-\d{4}$/.test(formData.phone)) {
-      newErrors.phone = 'Phone number is invalid. Format: (123) 456-7890';
+      newErrors.phone = 'Phone number is invalid. Format: (+91) 1234567890';
     }
     if (!formData.address.trim()) newErrors.address = 'Address is required';
     setErrors(newErrors);
