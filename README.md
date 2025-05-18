@@ -1,6 +1,6 @@
-                                                                              MERN Stack CRUD
+                                                              MERN Stack CRUD
 
-                                                                        MERN Stack CRUD Application
+                                                        MERN Stack CRUD Application
 
 Welcome to the MERN Stack CRUD Application! This project is a full-stack web application built with MongoDB Express React and Node.js that allows users to easily manage user data through a sleek and intuitive interface. Whether you want to add view update or delete user information this app provides a seamless experience with robust backend support and a responsive frontend.
 
