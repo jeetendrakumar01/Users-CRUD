@@ -11,7 +11,8 @@ const UserForm = ({ onSubmit, users, editingUser }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
+    countryCode: '+91', // Added countryCode field with a default
+    phoneNumber: '', // Renamed phone to phoneNumber
     address: ''
   });
 
@@ -23,7 +24,8 @@ const UserForm = ({ onSubmit, users, editingUser }) => {
       setFormData({
         name: editingUser.name,
         email: editingUser.email,
-        phone: editingUser.phone,
+        countryCode: editingUser.countryCode || '+91', // Handle existing countryCode or set default
+        phoneNumber: editingUser.phoneNumber || '', // Handle existing phoneNumber
         address: editingUser.address
       });
     } else if (id && users) {
@@ -32,7 +34,8 @@ const UserForm = ({ onSubmit, users, editingUser }) => {
         setFormData({
           name: userToEdit.name,
           email: userToEdit.email,
-          phone: userToEdit.phone,
+          countryCode: userToEdit.countryCode || '+91', // Handle existing countryCode or set default
+          phoneNumber: userToEdit.phoneNumber || '', // Handle existing phoneNumber
           address: userToEdit.address
         });
       }
@@ -48,10 +51,10 @@ const UserForm = ({ onSubmit, users, editingUser }) => {
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'Email is invalid';
     }
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    } else if (!/^\(\d{3}\) \d{3}-\d{4}$/.test(formData.phone)) {
-      newErrors.phone = 'Phone number is invalid. Format: (+91) 1234-5678';
+    if (!formData.phoneNumber.trim()) {
+      newErrors.phoneNumber = 'Phone number is required';
+    } else if (!/^\d{10}$/.test(formData.phoneNumber)) {
+      newErrors.phoneNumber = 'Phone number must be exactly 10 digits';
     }
     if (!formData.address.trim()) newErrors.address = 'Address is required';
     setErrors(newErrors);
@@ -60,7 +63,7 @@ const UserForm = ({ onSubmit, users, editingUser }) => {
 
   
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value});
+    setFormData({...formData, [e.target.name]: e.target.value.trim()}); // Trim whitespace
   };
 
   
@@ -68,10 +71,14 @@ const UserForm = ({ onSubmit, users, editingUser }) => {
     e.preventDefault();
     if (!validate()) return;
     console.log('Submitting form data:', formData);
+
+    // Concatenate country code and phone number for submission
+    const phoneForSubmission = `${formData.countryCode}${formData.phoneNumber}`;
+
     if (id) {
-      onSubmit(id, formData);
-    } else {
-      onSubmit(formData);
+      onSubmit(id, { ...formData, phone: phoneForSubmission });
+ } else {
+      onSubmit({ ...formData, phone: phoneForSubmission });
     }
     navigate('/users');
   };
@@ -89,34 +96,24 @@ const UserForm = ({ onSubmit, users, editingUser }) => {
         {errors.email && <small className="error">{errors.email}</small>}
       </div>
       <div className="phone-input-container">
-        <label htmlFor="phone">Phone Number:</label>
-        <div className="phone-input-wrapper">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="phone-icon"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-            width="20"
-            height="20"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3 5h2l3.6 7.59-1.35 2.44a11.042 11.042 0 005.15 5.15l2.44-1.35L19 19v2a2 2 0 01-2 2c-9.94 0-18-8.06-18-18a2 2 0 012-2z"
-            />
-          </svg>
-          <InputMask
-            mask="(+91) 1234-5678"
-            id="phone"
-            name="phone"
-            value={formData.phone}
+        <label htmlFor="phoneNumber">Phone Number:</label>
+        <div className="phone-inputs"> {/* Use a wrapper for the two phone inputs */}
+          <input
+            type="text"
+            name="countryCode"
+            value={formData.countryCode}
             onChange={handleChange}
-            placeholder="(91) 1234-5678"
+            placeholder="+91" // Placeholder for country code
+            className="country-code-input" // Add a class for styling
+          />
+          <InputMask
+            mask="9999999999"
+            name="phoneNumber" // Changed name to phoneNumber
+            value={formData.phoneNumber}
+            onChange={handleChange}
           />
         </div>
-        {errors.phone && <small className="error">{errors.phone}</small>}
+        {errors.phoneNumber && <small className="error">{errors.phoneNumber}</small>}
       </div>
       <div>
         <label htmlFor="address">Address:</label>
