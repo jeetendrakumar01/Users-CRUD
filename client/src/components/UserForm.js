@@ -51,7 +51,7 @@ const UserForm = ({ onSubmit, users, editingUser }) => {
     if (!formData.phone.trim()) {
       newErrors.phone = 'Phone number is required';
     } else if (!/^\(\d{3}\) \d{3}-\d{4}$/.test(formData.phone)) {
-      newErrors.phone = 'Phone number is invalid. Format: (91) 1234-5678';
+      newErrors.phone = 'Phone number is invalid. Format: (+91) 1234-5678';
     }
     if (!formData.address.trim()) newErrors.address = 'Address is required';
     setErrors(newErrors);
@@ -108,7 +108,7 @@ const UserForm = ({ onSubmit, users, editingUser }) => {
             />
           </svg>
           <InputMask
-            mask="(+91) 123456789"
+            mask="(+91) 1234-5678"
             id="phone"
             name="phone"
             value={formData.phone}
